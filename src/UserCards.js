@@ -4,7 +4,7 @@ import React from 'react';
 
 function UserCards(props){
 
-
+console.log('user prop',props);
 
 return (
     // <h3>Github Users</h3>
