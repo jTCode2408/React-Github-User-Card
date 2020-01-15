@@ -10,7 +10,8 @@ const UserCards = props => {
           alt="jasmine's profile pic"
         />
         <h1>{props.me.login}</h1> 
-        <h2>{props.me.name}'s Followers:</h2>        
+        <h2>{props.me.name}'s - {props.me.followers} Followers:</h2>
+           
   
       </div>
     )
