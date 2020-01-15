@@ -2,28 +2,24 @@ import React from 'react';
 
 
 
-const FollowerCard= (props)=>{
-
-console.log('follower props', props);
-
+const FollowerCard = (props) => {
+    console.log(`props Follower`, props)
+  
     return (
-        // <h3>Github Users</h3>
-    <div className = "user-cards">
-        {/* {props.followers.map(follower => (
-            <div key = {follower.id} className = "user">
-                <img width = "200" src = {follower.avatar_url} alt = "user avi"/>
-                <h5>Github Handle: {follower.login}</h5>
-                <a href = {follower.html_url} alt = "user page link">Profile</a>
-                <p>Company: {follower.company}</p>
-                <p>Bio: {follower.bio}</p>
-                <p>Followers: {follower.followers}</p>
-                <p>Following: {follower.following}</p>
-            </div>
-        ))} */}
-    </div>
-    
+      <div className = "follower-card">   
+        <img width ="200" src={props.follower.avatar_url} alt="profile pic" href="{props.follower.followers_url}"/>
+        <div>
+        <h2>{props.follower.login}</h2> 
+        <h4>{props.follower.name}</h4>
+        <a href = {props.follower.html_url} alt = "user page link">Profile</a>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        </div>
+      </div>
     )
-    
-    }
-    
-    export default FollowerCard;
+  }
+  
+  
+  export default FollowerCard;

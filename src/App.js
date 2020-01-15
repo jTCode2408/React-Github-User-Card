@@ -1,83 +1,55 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
+import UserCards from './UserCards';
+import Followers from './Followers';
 import axios from 'axios';
-import UserCards from './UserCards'
-import FollowerCard from './FollowerCard'
-//https://api.github.com/users/
-//https://api.github.com/users/< Your github name >/followers
-class App extends React.Component {
-constructor(){
-  super();
-this.state = {
-  users:[],
-  followers:[]
-};
+
+
+class App extends Component {
+  
+  state = {
+      me: "",
+      followers: []
+    }
+  
+  
+  componentDidMount() {
+    console.log(`mounting`)
+    axios
+      .get("https://api.github.com/users/jTCode2408")       
+      .then(initialRes => {
+        console.log(`my response`, initialRes.data)
+        this.setState({
+          me: initialRes.data
+        })        
+      })
+      .catch(err => {
+        console.log(`my`, err)
+      })
+
+    axios
+    .get("https://api.github.com/users/jTCode2408/followers")       
+    .then(res => {
+      console.log(`follower response`, res.data)
+      this.setState({
+        followers: res.data
+      })        
+    })
+    .catch(err => {
+      console.log(`follwoer`, err)
+    })
+  }
+
+  render() {
+    console.log(`rendering`)
+    return (
+      <div 
+        className="App">
+        <UserCards me={this.state.me}/>
+        <Followers followers={this.state.followers}/>
+      </div>
+    );
+  }
 }
-
-componentDidMount(){
-axios.get("https://api.github.com/users/jTCode2408")
-.then(response =>{
-
-  this.setState({
-    users: [response.data]
-  });
-  console.log('user res',response.data);
-})
-.catch(error=>{
-  console.log("error msg",error);
-})
-const followers= [
-  'asahmed93',
-  'aalvinlin',
-  'maggieprice',
-  'nicbongo',
-  'anamonteiro430'
-];
-
-followers.map(follower => (
-axios.get(`https://api.github.com/users/${follower}`)
-.then(response =>{
-
-  this.setState({
-    follower: [response.data]
-  });
-  console.log('Follower res',response.data);
-})
-.catch(error=>{
-  console.log("error follower msg",error);
-})
-
-
-))
-}
-render(){
-  return (
-    <div className="App">
-        <h1>Github usercards</h1>
-        <div className = "user-cont">
-          <UserCards users = {this.state.users}/>
-          {/* <FollowerCard follower = {this.state.follower}/> */}
-        </div>
-        <div className = "followers">
-        {this.state.followers.map(follower => (
-            <div key = {follower.id} className = "user">
-                <img width = "200" src = {follower.avatar_url} alt = "user avi"/>
-                <h5>Github Handle: {follower.login}</h5>
-                <a href = {follower.html_url} alt = "user page link">Profile</a>
-                <p>Company: {follower.company}</p>
-                <p>Bio: {follower.bio}</p>
-                <p>Followers: {follower.followers}</p>
-                <p>Following: {follower.following}</p>
-                
-            </div>
-            
-        ))}
-        
-        </div>
-    </div>
-  );
-};
-}
-
 
 export default App;

@@ -2,29 +2,19 @@
 //map over props from api response to set card data
 import React from 'react';
 
-function UserCards(props){
-
-console.log('user prop',props);
-
-return (
-    // <h3>Github Users</h3>
-<div className = "user-cards">
-    {props.users.map(user => (
-        <div key = {user.id} className = "user">
-            <img width = "200" src = {user.avatar_url} alt = "user avi"/>
-            <h4>{user.name}</h4>
-            <h5>Github Handle: {user.login}</h5>
-            <a href = {user.html_url} alt = "user page link">Profile</a>
-            <p>Company: {user.company}</p>
-            <p>Bio: {user.bio}</p>
-            <p>Followers: {user.followers}</p>
-            <p>Following: {user.following}</p>
-        </div>
-    ))}
-</div>
-
-)
-
-}
+const UserCards = props => {
+    return (
+      <div>
+        <img width= "200"
+         src={props.me.avatar_url} 
+          alt="jasmine's profile pic"
+        />
+        <h1>{props.me.login}</h1> 
+        <h2>{props.me.name}'s Followers:</h2>        
+  
+      </div>
+    )
+  }
+  
 
 export default UserCards;
