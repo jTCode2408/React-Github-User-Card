@@ -14,11 +14,10 @@ class App extends Component {
   
   
   componentDidMount() {
-    console.log(`mounting`)
+    
     axios
       .get("https://api.github.com/users/jTCode2408")       
       .then(initialRes => {
-        console.log(`my response`, initialRes.data)
         this.setState({
           me: initialRes.data
         })        
@@ -28,9 +27,9 @@ class App extends Component {
       })
 
     axios
-    .get("https://api.github.com/users/jTCode2408/followers")       
+    .get("https://api.github.com/users/jTCode2408/followers")    
     .then(res => {
-      console.log(`follower response`, res.data)
+    
       this.setState({
         followers: res.data
       })        
