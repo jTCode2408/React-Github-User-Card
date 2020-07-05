@@ -26,6 +26,7 @@ class App extends Component {
     axios
     .get("https://api.github.com/users/jTCode2408/followers")    
     .then(res => {
+      console.log(res)
       this.setState({
         followers: res.data
       })        
