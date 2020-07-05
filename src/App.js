@@ -6,12 +6,10 @@ import axios from 'axios';
 
 
 class App extends Component {
-  
   state = {
       me: "",
       followers: []
     }
-  
   
   componentDidMount() {
     
@@ -23,24 +21,21 @@ class App extends Component {
         })        
       })
       .catch(err => {
-        console.log(`my`, err)
       })
 
     axios
     .get("https://api.github.com/users/jTCode2408/followers")    
     .then(res => {
-    
       this.setState({
         followers: res.data
       })        
     })
     .catch(err => {
-      console.log(`follwoer`, err)
     })
   }
 
   render() {
-    console.log(`rendering`)
+   
     return (
       <div 
         className="App">

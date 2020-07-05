@@ -2,7 +2,6 @@ import React from 'react';
 import FollowerCard from './FollowerCard';
 
 
-
 const Followers = (props) => {
   
     return (
