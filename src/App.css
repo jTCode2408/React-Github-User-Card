@@ -22,13 +22,11 @@
 }
 
 .my-card{
-  border:2px solid black;
   align-items:center;
   width:100%
 }
 
 .follower{
-  border: 2px solid green;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -37,7 +35,6 @@
 }
 
 .follower-cont{
-  border: 2px solid red;
   margin:5%;
   width:20%
 }
