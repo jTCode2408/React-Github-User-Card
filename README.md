@@ -5,7 +5,7 @@
 https://react-github-user-card.jasmineterry.vercel.app/
 
 # Built With:
-* ReactJS, CSS
+**ReactJS, CSS
 
 # Specifications
 
